@@ -1,4 +1,4 @@
-# Jukmper
+# Jumper
 Well you sure did it this time. Jumping out of a perfectly good airplane sounded fine until now! Your parachute will fail unless you guess the correct letters and figure out the word. Guess wrong and your parachutes cords will start snapping. Put it all on the line as you think under pressure!
 
 ---
