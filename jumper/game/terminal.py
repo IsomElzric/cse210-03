@@ -1,3 +1,13 @@
+"""
+terminal.py
+This class just handles the output and input for the project, I would have
+liked to move just a bit more into here.
+
+for CSE 210 w03
+by Alexander Turner
+"""
+
+
 class Terminal:
     def read_text(self, prompt):
         return input(prompt).lower()
