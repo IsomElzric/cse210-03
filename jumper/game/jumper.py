@@ -14,6 +14,7 @@ from random import randint
 
 WORD_LIST_FILE = "jumper/game/assets/word_list.txt"
 JUMP_GUY_FILE = "jumper/game/assets/jump_guy.txt"
+GUESSES_ALLOWED = 5
 
 
 class Jumper:
@@ -28,15 +29,14 @@ class Jumper:
         self._word = []
         self._word_list = self.load_word_list()
         self._jump_guy = self.load_jump_guy()
+        self._guesses = GUESSES_ALLOWED
 
     def generate_word(self):
         """
         Picks a word from our word list for the guesser to solve.
         """
         self._word = list(self._word_list[randint(0, len(self._word_list))])
-        
         # print("DEBUG@Jumper: Chosen word is {}".format(self._word))
-        
         return self._word
 
     def get_guess_indices(self, letter):
@@ -50,9 +50,7 @@ class Jumper:
             for c  in self._word:
                 try:
                     index_list.append(self._word.index(letter, count))
-                    
                     # print("DEBUG@Jumper: Getting index {} for {}".format(index_list, letter))
-                    
                     count += 1
 
                 except ValueError:
@@ -74,12 +72,11 @@ class Jumper:
         # print("DEBUG@Jumper: Guessed wrong, removing {}".format(self._jump_guy[0]))
         # print("DEBUG@Jumper: List length is {}".format(len(self._jump_guy)))
         
-        if len(self._jump_guy) > 5:
+        if len(self._jump_guy) > self._guesses:
             self._jump_guy = self._jump_guy[1:]
         
-        elif len(self._jump_guy) == 5:
+        elif len(self._jump_guy) == self._guesses:
             # print("DEBUG@Jumper: List length is 5 changing {}".format(self._jump_guy[0]))
-            
             self._jump_guy[0] = "    X" # Definitely wanted to do better than this
             return False
 

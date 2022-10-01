@@ -20,7 +20,7 @@ class Guesser:
         """
         self._current_word = []
         # print("DEBUG@Guesser: Word recieved was {}".format(word))
-
+        
         for c in word:
             self._current_word.append("_")
     
